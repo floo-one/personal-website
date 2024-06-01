@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: "Welcome to My Personal Website"
+title: "Floo.One"
 ---
 {% for section in collections.sections %}
     {{ section.templateContent | safe }}
