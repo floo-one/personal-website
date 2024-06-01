@@ -29,6 +29,9 @@
       }
     }
     </script>
+    {% if process.env.NODE_ENV === 'development' %}
+    <script src="/.11ty/reload-client.js"></script>
+    {% endif %}
 </head>
 <body>
     <header>
