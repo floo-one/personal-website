@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSection = 0; // Start with the welcome section
     const modeToggle = document.getElementById('dark-mode-toggle');
     const modeIcon = document.getElementById('mode-icon');
+    let initialY = null; // Initial touch position for mobile scrolling
 
     // Set default mode to dark mode
     document.body.classList.add('dark-mode');
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const handleTouchMove = (event) => {
-        if (isThrottled) return;
+        if (isThrottled || !initialY) return;
 
         const currentY = event.touches[0].clientY;
         const deltaY = initialY - currentY;
@@ -55,6 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (deltaY < -50 && currentSection > 0) {
             currentSection--;
         }
+
+        initialY = currentY;
 
         scrollToSection(currentSection);
         isThrottled = true;
@@ -75,8 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('wheel', handleScroll);
     window.addEventListener('touchstart', handleTouchStart);
     window.addEventListener('touchmove', handleTouchMove);
-
-    let initialY = null;
 
     scrollToSection(currentSection); // Initialize position to the welcome section
 });
