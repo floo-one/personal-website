@@ -1,4 +1,5 @@
 ---
+layout: "blog.njk"
 title: "My 5 Blog Post"
 date: "2024-06-02"
 ---
