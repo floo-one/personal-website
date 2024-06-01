@@ -3,11 +3,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const cors = require('cors'); // Add this line
+const cors = require('cors');
 const app = express();
 const port = 8081;
 
-app.use(cors()); // Add this line
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -68,8 +68,8 @@ function authMiddleware(req, res, next) {
   if (req.cookies.auth === 'true') {
     next();
   } else {
-    console.log('Not authenticated, redirecting to /blog');
-    res.redirect('/blog'); // Redirect to login page if not authenticated
+    console.log('Not authenticated, redirecting to /login');
+    res.redirect('/login'); // Redirect to login page if not authenticated
   }
 }
 
@@ -77,13 +77,10 @@ function authMiddleware(req, res, next) {
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Protect all /blog content except the login page
-app.use('/blog', (req, res, next) => {
-  if (req.path === '/' || req.path === '/index.html') {
-    next(); // Allow access to login page
-  } else {
-    authMiddleware(req, res, next); // Protect other blog content
-  }
-});
+app.use('/blog', authMiddleware, express.static(path.join(__dirname, 'dist/blog')));
+
+// Serve static files for login page without authentication
+app.use('/login', express.static(path.join(__dirname, 'dist/login')));
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

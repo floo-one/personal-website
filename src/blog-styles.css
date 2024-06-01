@@ -1,0 +1,239 @@
+/* Import colors */
+@import url('colors.css');
+
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Body default to dark mode */
+body {
+    background-color: var(--background-color-dark); /* Default to dark mode background color */
+    color: var(--text-color-dark); /* Default to dark mode text color */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Header styles */
+header {
+    background-color: var(--primary-color-dark);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--border-color-dark); /* Retain border in dark mode */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999; /* Ensure header is on top */
+}
+
+header h1 {
+    color: var(--text-color-dark);
+    margin-bottom: 10px;
+    border-bottom: none; /* Remove any bottom border */
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    margin: 0 15px;
+    padding: 10px 20px; /* Add padding for button effect */
+    background-color: var(--primary-color-dark); /* Background color for buttons */
+    color: var(--text-color-dark);
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--accent-color-dark); /* Change background on hover */
+    color: var(--text-color-light); /* Change text color on hover */
+    text-decoration: none;
+}
+
+/* Content section */
+.section {
+    padding: 60px 20px 40px; /* Adjust padding to account for fixed header and add spacing below content */
+    margin-top: 80px; /* Add margin to separate content from the header */
+}
+
+/* Blog list styles */
+.blog-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px; /* Add spacing below the blog articles */
+}
+
+.blog-post {
+    margin-bottom: 15px;
+}
+
+.blog-post a {
+    color: var(--link-color-dark);
+    font-weight: bold;
+}
+
+.blog-post a:hover {
+    text-decoration: underline;
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it is on top of other elements */
+}
+
+.dark-mode-toggle img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Light Mode Styles */
+body.light-mode {
+    background-color: var(--background-color-light); /* Use variable for background color */
+    color: var(--text-color-light); /* Use variable for text color */
+}
+
+body.light-mode header {
+    background-color: var(--primary-color-light);
+    border-bottom: 2px solid var(--border-color-dark); /* Add dark mode border in light mode */
+}
+
+body.light-mode header h1 {
+    color: var(--text-color-light);
+    text-decoration: none; /* Remove underline from headings */
+}
+
+body.light-mode nav a {
+    background-color: var(--primary-color-light); /* Background color for buttons in light mode */
+    color: var(--text-color-light); /* Text color in light mode */
+}
+
+body.light-mode nav a:hover {
+    background-color: var(--accent-color-light); /* Change background on hover in light mode */
+    color: var(--text-color-dark); /* Change text color on hover in light mode */
+}
+
+body.light-mode .blog-post a {
+    color: var(--link-color-light);
+}
+
+body.light-mode .blog-post a:hover {
+    color: var(--accent-color-light);
+}
+
+/* Additional spacing for content */
+.section h1 {
+    margin-bottom: 20px; /* Add spacing below "Blog Articles" */
+}
+
+/* Form Styles */
+.form-group {
+    margin-top: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color-dark); /* Default to dark mode text color */
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--border-color-dark); /* Default to dark mode border color */
+    border-radius: 5px;
+    background-color: var(--background-color-dark); /* Default to dark mode input background */
+    color: var(--text-color-dark); /* Default to dark mode text color */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--accent-color-dark); /* Focus border color */
+    outline: none;
+}
+
+body.light-mode input, body.light-mode textarea {
+    background-color: var(--background-color-light); /* Use variable for input background */
+    color: var(--text-color-light); /* Use variable for text color */
+    border: 1px solid var(--border-color-light); /* Use variable for border color */
+}
+
+body.light-mode input:focus, body.light-mode textarea:focus {
+    border-color: var(--accent-color-light); /* Focus border color */
+}
+
+/* Link Styles */
+a {
+    color: var(--link-color-dark); /* Default link color for dark mode */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body.light-mode a {
+    color: var(--link-color-light); /* Use variable for link color */
+}
+
+body.light-mode a:hover {
+    color: var(--accent-color-light); /* Use variable for link hover color */
+}
+
+/* Social Media Styles */
+.social-media {
+    margin-top: 20px;
+}
+
+.social-media a {
+    color: var(--link-color-dark);
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: var(--accent-color-dark);
+}
+
+body.light-mode .social-media a {
+    color: var(--link-color-light);
+}
+
+body.light-mode .social-media a:hover {
+    color: var(--accent-color-light);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .intro {
+        padding: 10px;
+    }
+
+    .cta {
+        padding: 8px 16px;
+    }
+
+    .social-media a {
+        font-size: 20px;
+    }
+
+    input, textarea {
+        padding: 8px;
+    }
+}

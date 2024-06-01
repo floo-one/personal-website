@@ -19,7 +19,7 @@ order: 2
         
         <div class="project">
             <h2>Blog</h2>
-            <a href="https://blog.shifu.lol" class="cta">Visit My Blog</a>
+            <a href="http://localhost:8080/blog" class="cta">Visit My Blog</a>
         </div>
 
     </div>
