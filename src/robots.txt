@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://floo.one/sitemap.xml

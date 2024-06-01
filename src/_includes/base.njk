@@ -8,13 +8,37 @@
     <meta name="keywords" content="Floo, personal website, projects, web development, artificial intelligence, process automation">
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://floo.one{{ page.url }}">
     <script src="https://kit.fontawesome.com/94ddf13ef3.js" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Florian Maag",
+      "url": "https://floo.one",
+      "sameAs": [
+        "https://instagram.com/floo.one",
+        "https://linkedin.com/in/floo",
+        "https://github.com/floo-one",
+        "https://www.tiktok.com/@floo.one"
+      ],
+      "jobTitle": "Digital Process Automatisation",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Florian Maag"
+      }
+    }
+    </script>
 </head>
 <body>
-    <button id="dark-mode-toggle" class="dark-mode-toggle">
-        <img id="mode-icon" src="/light-mode-icon.png" alt="Toggle Dark Mode">
-    </button>
-    {{ content | safe }}
+    <header>
+        <button id="dark-mode-toggle" class="dark-mode-toggle">
+            <img id="mode-icon" src="/light-mode-icon.png" alt="Toggle Dark Mode">
+        </button>
+    </header>
+    <main>
+        {{ content | safe }}
+    </main>
     <script src="/scripts.js"></script>
 </body>
 </html>

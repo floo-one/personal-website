@@ -8,6 +8,10 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/light-mode-icon.png");
     eleventyConfig.addPassthroughCopy("src/dark-mode-icon.png");
 
+    eleventyConfig.addPassthroughCopy("src/robots.txt");
+    eleventyConfig.addPassthroughCopy("src/sitemap.xml");
+
+
     // Create a collection for the sections and sort them by order
     eleventyConfig.addCollection("sections", function(collectionApi) {
         return collectionApi.getFilteredByGlob("src/content/*.md").sort((a, b) => a.data.order - b.data.order);
