@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="canonical" href="https://floo.one{{ page.url }}">
-    <script src="https://kit.fontawesome.com/94ddf13ef3.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/94ddf13ef3.js" crossorigin="anonymous" async></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -29,9 +29,8 @@
       }
     }
     </script>
-    {% if process.env.NODE_ENV === 'development' %}
-    <script src="/.11ty/reload-client.js"></script>
-    {% endif %}
+    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
 </head>
 <body>
     <header>
@@ -42,6 +41,6 @@
     <main>
         {{ content | safe }}
     </main>
-    <script src="/scripts.js"></script>
+    <script src="/scripts.js" async></script>
 </body>
 </html>
