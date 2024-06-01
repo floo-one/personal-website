@@ -1,0 +1,19 @@
+:root {
+    /* Light Mode Colors */
+    --background-color-light: #f4f4f4;
+    --primary-color-light: #ffffff;
+    --secondary-color-light: #e0e0e0;
+    --accent-color-light: #c0c0c0;
+    --text-color-light: #333;
+    --link-color-light: #007BFF;
+    --border-color-light: #333;
+
+    /* Dark Mode Colors */
+    --background-color-dark: #121212;
+    --primary-color-dark: #1a1a2e;
+    --secondary-color-dark: #16213e;
+    --accent-color-dark: #0f3460;
+    --text-color-dark: #f4f4f4;
+    --link-color-dark: #1e90ff;
+    --border-color-dark: #f4f4f4;
+}

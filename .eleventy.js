@@ -1,15 +1,29 @@
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/style.css");
-  eleventyConfig.addPassthroughCopy("src/scripts.js");
-  eleventyConfig.addPassthroughCopy({
-    "node_modules/jquery/dist/jquery.min.js": "js/jquery.min.js",
-    "node_modules/jquery-scrollify/jquery.scrollify.js": "js/jquery.scrollify.js"
-  });
+    eleventyConfig.setTemplateFormats("njk,md");
 
-  return {
-    dir: {
-      input: "src",
-      output: "dist"
-    }
-  };
+    eleventyConfig.addPassthroughCopy("src/styles.css");
+    eleventyConfig.addPassthroughCopy("src/scripts.js");
+    eleventyConfig.addPassthroughCopy("src/colors.css");
+    eleventyConfig.addPassthroughCopy("src/favicon.ico");
+    eleventyConfig.addPassthroughCopy("src/light-mode-icon.png");
+    eleventyConfig.addPassthroughCopy("src/dark-mode-icon.png");
+
+    // Create a collection for the sections and sort them by order
+    eleventyConfig.addCollection("sections", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("src/content/*.md").sort((a, b) => a.data.order - b.data.order);
+    });
+
+    console.log("Configuring Eleventy directories");
+
+    return {
+        dir: {
+            input: "src",
+            includes: "_includes",
+            layouts: "_includes",
+            output: "dist"
+        },
+        markdownTemplateEngine: "njk",
+        htmlTemplateEngine: "njk",
+        dataTemplateEngine: "njk"
+    };
 };
