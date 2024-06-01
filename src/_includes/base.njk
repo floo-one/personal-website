@@ -38,9 +38,11 @@
             <img id="mode-icon" src="/light-mode-icon.png" alt="Toggle Dark Mode">
         </button>
     </header>
+    {% include "partials/header.njk" %}
     <main>
         {{ content | safe }}
     </main>
+    {% include "partials/footer.njk" %}
     <script src="/scripts.js" async></script>
 </body>
 </html>

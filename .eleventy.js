@@ -1,25 +1,21 @@
 const { DateTime } = require("luxon");
+const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.setTemplateFormats("njk,md");
 
-    eleventyConfig.addPassthroughCopy("src/styles.css");
-    eleventyConfig.addPassthroughCopy("src/blog-styles.css");
-    eleventyConfig.addPassthroughCopy("src/colors.css");
-    eleventyConfig.addPassthroughCopy("src/favicon.ico");
-    eleventyConfig.addPassthroughCopy("src/light-mode-icon.png");
-    eleventyConfig.addPassthroughCopy("src/dark-mode-icon.png");
-    eleventyConfig.addPassthroughCopy("src/scripts.js");
-    eleventyConfig.addPassthroughCopy("src/authentication.js");
-    eleventyConfig.addPassthroughCopy("src/robots.txt");
-    eleventyConfig.addPassthroughCopy("src/sitemap.xml");
+      eleventyConfig.addPlugin(eleventyNavigationPlugin);
+
+      eleventyConfig.addPassthroughCopy("src/assets");
+      eleventyConfig.addPassthroughCopy("src/admin");
 
     // Create a collection for the sections and sort them by order
     eleventyConfig.addCollection("sections", function(collectionApi) {
         return collectionApi.getFilteredByGlob("src/content/*.md").sort((a, b) => a.data.order - b.data.order);
     });
 
-    // Create a collection for the blog posts
+    // Create a collection for the blog _posts
     eleventyConfig.addCollection("blog", function(collectionApi) {
         return collectionApi.getFilteredByGlob("src/blog/*.md").sort((a, b) => b.date - a.date);
     });
@@ -33,11 +29,12 @@ module.exports = function(eleventyConfig) {
 
     return {
         dir: {
-            input: "src",
-            includes: "_includes",
-            layouts: "_includes",
-            output: "dist"
+          input: "src",
+          includes: "_includes",
+          data: "_data",
+          output: "_site"
         },
+
         markdownTemplateEngine: "njk",
         htmlTemplateEngine: "njk",
         dataTemplateEngine: "njk"
