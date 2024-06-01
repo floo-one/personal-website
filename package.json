@@ -3,12 +3,20 @@
   "version": "1.0.0",
   "scripts": {
     "build": "eleventy",
-    "start": "eleventy --serve"
+    "run": "eleventy --serve",
+    "start": "concurrently --kill-others-on-fail --names \"ELEVENTY,EXPRESS,SYSTEM\" -c \"bgBlue.bold,bgGreen.bold,bgBlack.red.bold\" \"eleventy --serve --port=8080\" \"node server.js\" \"wait-on http://localhost:8080 && wait-on http://localhost:8081 && echo ELEVENTY running at http://localhost:8080 and EXPRESS running at http://localhost:8081\""
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.0"
+    "@11ty/eleventy": "^2.0.0",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0"
   },
   "dependencies": {
-    "nunjucks": "^3.2.4"
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "lowdb": "^7.0.1",
+    "nunjucks": "^3.2.4",
+    "sleep": "^6.3.0"
   }
 }
