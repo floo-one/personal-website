@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     let isThrottled = false;
-    const throttleDuration = 1000; // Adjust this value to control the scrolling speed
+    const throttleDuration = 500; // Reduce throttle duration to make scrolling faster
 
     const handleScroll = (event) => {
         if (isThrottled) return;
@@ -51,17 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentY = event.touches[0].clientY;
         const deltaY = initialY - currentY;
 
-        if (deltaY > 50 && currentSection < sections.length - 1) {
-            currentSection++;
-        } else if (deltaY < -50 && currentSection > 0) {
-            currentSection--;
+        if (Math.abs(deltaY) > 30) { // Adjust the threshold for faster response
+            if (deltaY > 0 && currentSection < sections.length - 1) {
+                currentSection++;
+            } else if (deltaY < 0 && currentSection > 0) {
+                currentSection--;
+            }
+
+            initialY = currentY;
+            scrollToSection(currentSection);
+            isThrottled = true;
+            setTimeout(() => isThrottled = false, throttleDuration);
         }
-
-        initialY = currentY;
-
-        scrollToSection(currentSection);
-        isThrottled = true;
-        setTimeout(() => isThrottled = false, throttleDuration);
     };
 
     const toggleDarkMode = () => {
