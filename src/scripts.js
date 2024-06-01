@@ -40,6 +40,27 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => isThrottled = false, throttleDuration);
     };
 
+    const handleTouchStart = (event) => {
+        initialY = event.touches[0].clientY;
+    };
+
+    const handleTouchMove = (event) => {
+        if (isThrottled) return;
+
+        const currentY = event.touches[0].clientY;
+        const deltaY = initialY - currentY;
+
+        if (deltaY > 50 && currentSection < sections.length - 1) {
+            currentSection++;
+        } else if (deltaY < -50 && currentSection > 0) {
+            currentSection--;
+        }
+
+        scrollToSection(currentSection);
+        isThrottled = true;
+        setTimeout(() => isThrottled = false, throttleDuration);
+    };
+
     const toggleDarkMode = () => {
         document.body.classList.toggle('dark-mode');
         document.body.classList.toggle('light-mode');
@@ -52,5 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modeToggle.addEventListener('click', toggleDarkMode);
     window.addEventListener('wheel', handleScroll);
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchmove', handleTouchMove);
+
+    let initialY = null;
+
     scrollToSection(currentSection); // Initialize position to the welcome section
 });

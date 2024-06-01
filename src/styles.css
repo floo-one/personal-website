@@ -196,3 +196,22 @@ body.light-mode .social-media a {
 body.light-mode .social-media a:hover {
     color: var(--accent-color-light);
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .intro {
+        padding: 10px;
+    }
+
+    .cta {
+        padding: 8px 16px;
+    }
+
+    .social-media a {
+        font-size: 20px;
+    }
+
+    input, textarea {
+        padding: 8px;
+    }
+}
