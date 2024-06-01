@@ -17,6 +17,12 @@ order: 4
             </a>
             <a href="https://github.com/floo-one" target="_blank" aria-label="GitHub">
                 <i class="fab fa-github"></i>
+            </a>            
+            <a href="https://tiktok.com/@floo.one" target="_blank" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://discordapp.com/users/1057292635431251998" target="_blank" aria-label="Discord">
+                <i class="fab fa-discord"></i>
             </a>
         </div>
     </div>
