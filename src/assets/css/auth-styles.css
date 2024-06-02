@@ -1,0 +1,169 @@
+/* Import colors */
+@import url('colors.css');
+
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* Disable default scrolling */
+    font-family: Arial, sans-serif;
+}
+
+/* Body default to dark mode */
+body {
+    background-color: var(--primary-color-dark); /* Default to dark mode background color */
+    color: var(--text-color-dark); /* Default to dark mode text color */
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Auth container styles */
+.auth-container {
+    background: var(--primary-color-dark); /* Default to dark mode background */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
+
+.auth-container h2 {
+    color: var(--text-color-dark); /* Default to dark mode text color */
+    border-bottom: 2px solid var(--border-color-dark); /* Default to dark mode border color */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.auth-form label {
+    color: var(--text-color-dark); /* Default to dark mode text color */
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.auth-form input {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color-dark); /* Default to dark mode border color */
+    border-radius: 5px;
+    background-color: var(--input-background-color-dark); /* Set to a lighter color */
+    color: var(--text-color-dark); /* Default to dark mode text color */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-size: 16px;
+}
+
+.auth-form input:focus {
+    border-color: var(--accent-color-dark); /* Focus border color */
+    outline: none;
+}
+
+.auth-form button {
+    padding: 15px;
+    background-color: var(--button-background-color-dark); /* Default to dark mode button background */
+    color: var(--button-text-color-dark); /* Ensure text color is visible */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.auth-form button:hover {
+    background-color: var(--accent-color-dark); /* Default to dark mode button hover background */
+}
+
+.auth-container button {
+    padding: 15px;
+    background: var(--button-background-color-dark);
+    color: var(--button-text-color-dark);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.auth-container button:hover {
+    background: var(--accent-color-dark);
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it is on top of other elements */
+}
+
+.dark-mode-toggle img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Light Mode Styles */
+body.light-mode {
+    background-color: var(--background-color-light); /* Use variable for background color */
+    color: var(--text-color-light); /* Use variable for text color */
+}
+
+body.light-mode .auth-container {
+    background: var(--primary-color-light); /* Use variable for section background */
+    color: var(--text-color-light); /* Apply text color to entire intro section */
+}
+
+body.light-mode .auth-container h2 {
+    border-bottom: 2px solid var(--border-color-light); /* Use variable for border color */
+    color: var(--text-color-light); /* Use variable for text color */
+}
+
+body.light-mode .auth-form label {
+    color: var(--text-color-light); /* Use variable for text color */
+}
+
+body.light-mode .auth-form input {
+    background-color: var(--input-background-color-light); /* Use variable for input background */
+    color: var(--text-color-light); /* Use variable for text color */
+    border: 1px solid var(--border-color-light); /* Use variable for border color */
+}
+
+body.light-mode .auth-form input:focus {
+    border-color: var(--accent-color-light); /* Focus border color */
+}
+
+body.light-mode .auth-form button {
+    background-color: var(--button-background-color-light); /* Use variable for button background */
+    color: var(--button-text-color-light); /* Ensure text color is visible */
+}
+
+body.light-mode .auth-form button:hover {
+    background-color: var(--accent-color-light); /* Use variable for button hover background */
+}
+
+body.light-mode .auth-container button {
+    background: var(--button-background-color-light);
+    color: var(--button-text-color-light);
+}
+
+body.light-mode .auth-container button:hover {
+    background: var(--accent-color-light);
+}

@@ -6,8 +6,8 @@
     <title>{{ title }}</title>
     <meta name="description" content="Welcome to the personal website of Floo. Explore projects, interests, and get in touch.">
     <meta name="keywords" content="Floo, personal website, projects, web development, artificial intelligence, process automation">
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="canonical" href="https://floo.one{{ page.url }}">
     <script src="https://kit.fontawesome.com/94ddf13ef3.js" crossorigin="anonymous" async></script>
     <script type="application/ld+json">
@@ -29,20 +29,18 @@
       }
     }
     </script>
-    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+    <link rel="preload" href="/assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/css/style.css"></noscript>
 </head>
 <body>
     <header>
         <button id="dark-mode-toggle" class="dark-mode-toggle">
-            <img id="mode-icon" src="/light-mode-icon.png" alt="Toggle Dark Mode">
+            <img id="mode-icon" src="/assets/img/light-mode-icon.png" alt="Toggle Dark Mode">
         </button>
     </header>
-    {% include "partials/header.njk" %}
     <main>
         {{ content | safe }}
     </main>
-    {% include "partials/footer.njk" %}
-    <script src="/scripts.js" async></script>
+    <script src="/assets/js/scripts.js" async></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 ---
-layout: "base.njk"
-title: "Login"
+layout: "login.njk"
+title: ""
 ---
 
 <h1>Login</h1>
@@ -21,4 +21,4 @@ title: "Login"
   <button type="submit">Register</button>
 </form>
 
-<script src="/authentication.js"></script>
+<script src="/assets/js/authentication.js"></script>

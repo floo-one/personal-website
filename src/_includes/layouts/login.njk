@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="/assets/css/auth-styles.css"> <!-- Include the auth-specific styles -->
+</head>
+<body>
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+    <img id="dark-mode-icon" src="/assets/img/dark-mode-icon.png" alt="Toggle Dark Mode"> <!-- Ensure the path is correct -->
+  </button>
+  <main>
+    <div class="auth-container">
+      <div id="login-form-container" class="auth-form-container">
+        <h2>Login</h2>
+        <form id="login-form" class="auth-form">
+          <label for="login-username">Username:</label>
+          <input type="text" id="login-username" name="login-username" required>
+          <label for="login-password">Password:</label>
+          <input type="password" id="login-password" name="login-password" required>
+          <button type="submit">Login</button>
+        </form>
+        <button id="show-register">Don't have an account? Register</button>
+      </div>
+
+      <div id="register-form-container" class="auth-form-container" style="display: none;">
+        <h2>Register</h2>
+        <form id="register-form" class="auth-form">
+          <label for="register-username">Username:</label>
+          <input type="text" id="register-username" name="register-username" required>
+          <label for="register-password">Password:</label>
+          <input type="password" id="register-password" name="register-password" required>
+          <button type="submit">Register</button>
+        </form>
+        <button id="show-login">Already have an account? Login</button>
+      </div>
+    </div>
+  </main>
+  <script src="/assets/js/authentication.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginFormContainer = document.getElementById('login-form-container');
+      const registerFormContainer = document.getElementById('register-form-container');
+      const showRegisterButton = document.getElementById('show-register');
+      const showLoginButton = document.getElementById('show-login');
+
+      showRegisterButton.addEventListener('click', function() {
+        loginFormContainer.style.display = 'none';
+        registerFormContainer.style.display = 'block';
+      });
+
+      showLoginButton.addEventListener('click', function() {
+        registerFormContainer.style.display = 'none';
+        loginFormContainer.style.display = 'block';
+      });
+
+      // Add event listener for dark mode toggle
+      const darkModeToggle = document.querySelector('.dark-mode-toggle');
+      const darkModeIcon = document.getElementById('dark-mode-icon');
+
+      darkModeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('light-mode');
+        if (document.body.classList.contains('light-mode')) {
+          darkModeIcon.src = '/assets/img/light-mode-icon.png'; // Change to light mode icon
+        } else {
+          darkModeIcon.src = '/assets/img/dark-mode-icon.png'; // Change to dark mode icon
+        }
+      });
+    });
+  </script>
+</body>
+</html>

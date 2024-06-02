@@ -7,6 +7,9 @@
     --text-color-light: #333;
     --link-color-light: #007BFF;
     --border-color-light: #333;
+    --button-background-color-light: #007BFF;
+    --button-text-color-light: #ffffff;
+    --input-background-color-light: #ffffff;
 
     /* Dark Mode Colors */
     --background-color-dark: #121212;
@@ -16,4 +19,7 @@
     --text-color-dark: #f4f4f4;
     --link-color-dark: #1e90ff;
     --border-color-dark: #f4f4f4;
+    --button-background-color-dark: #1e90ff;
+    --button-text-color-dark: #f4f4f4;
+    --input-background-color-dark: #333;
 }

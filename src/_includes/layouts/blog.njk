@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="/assets/css/blog-styles.css"> <!-- Include the blog-specific styles -->
+</head>
+<body>
+  <header>
+    <h1>{{ title }}</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+    </nav>
+  </header>
+  <main>
+    <div id="content" class="section">
+      <script>
+        // Function to get the value of a specific cookie by name
+        function getCookie(name) {
+          let cookieArr = document.cookie.split(";");
+
+          for (let i = 0; i < cookieArr.length; i++) {
+            let cookiePair = cookieArr[i].split("=");
+
+            // Removing whitespace at the beginning of the cookie name and compare it with the given string
+            if (name === cookiePair[0].trim()) {
+              // Decode the cookie value and return
+              return decodeURIComponent(cookiePair[1]);
+            }
+          }
+          return null;
+        }
+
+        // Check if the user is authenticated
+        const authCookie = getCookie('auth');
+        console.log('Auth Cookie:', authCookie); // Debugging: log the value of the auth cookie
+        if (authCookie !== 'true') {
+          console.log('Not authenticated, redirecting to /login');
+          window.location.href = "/login";
+        } else {
+          console.log('Authenticated');
+        }
+      </script>
+
+      <h1>Blog Articles</h1>
+      <ul class="blog-list">
+        {% for post in collections.blog %}
+          {% if post.inputPath != './src/blog/index.md' %}
+            <li class="blog-post">
+              <a href="{{ post.url }}">{{ post.data.title }}</a> - {{ post.date | dateFormat("LLLL dd, yyyy") }}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </main>
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+    <img src="/assets/img/dark-mode-icon.png" alt="Toggle Dark Mode"> <!-- Ensure the path is correct -->
+  </button>
+  <script src="/assets/js/authentication.js"></script>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('light-mode');
+    }
+  </script>
+</body>
+</html>

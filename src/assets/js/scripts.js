@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set default mode to dark mode
     document.body.classList.add('dark-mode');
-    modeIcon.src = '/light-mode-icon.png';
+    modeIcon.src = '/assets/img/dark-mode-icon.png';
 
     const scrollToSection = (index) => {
         sections.forEach((section, i) => {
@@ -69,9 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.toggle('dark-mode');
         document.body.classList.toggle('light-mode');
         if (document.body.classList.contains('dark-mode')) {
-            modeIcon.src = '/light-mode-icon.png';
+            modeIcon.src = '/assets/img/dark-mode-icon.png';
         } else {
-            modeIcon.src = '/dark-mode-icon.png';
+            modeIcon.src = '/assets/img/light-mode-icon.png';
         }
     };
 
