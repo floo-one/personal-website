@@ -1,20 +1,28 @@
 {
   "name": "personal-website",
   "version": "1.0.0",
+  "description": "My personal website built with Eleventy and Express.js",
+  "main": "server.js",
   "scripts": {
     "build": "eleventy",
     "run": "eleventy --serve",
     "start": "concurrently --kill-others-on-fail --names \"ELEVENTY,EXPRESS,SYSTEM\" -c \"bgBlue.bold,bgGreen.bold,bgBlack.red.bold\" \"eleventy --serve --port=8080\" \"node server.js\" \"wait-on http://localhost:8080 && wait-on http://localhost:8081 && echo ELEVENTY running at http://localhost:8080 and EXPRESS running at http://localhost:8081\""
   },
-  "dependencies": {
-    "express": "^4.17.1",
-    "cors": "^2.8.5",
-    "cookie-parser": "^1.4.5",
-    "body-parser": "^1.19.0"
-  },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1"
+    "@11ty/eleventy": "^2.0.0",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0"
   },
-  "author": "Your Name",
+  "dependencies": {
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "lowdb": "^7.0.1",
+    "luxon": "^3.4.4",
+    "nunjucks": "^3.2.4",
+    "sleep": "^6.3.0"
+  },
+  "author": "Floo.One",
   "license": "MIT"
 }
