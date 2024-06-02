@@ -12,10 +12,8 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// File to store user data
 const userDataFile = path.join(__dirname, 'users.json');
 
-// Helper function to read user data
 function readUserData() {
   if (!fs.existsSync(userDataFile)) {
     return [];
@@ -24,63 +22,55 @@ function readUserData() {
   return JSON.parse(data);
 }
 
-// Helper function to write user data
 function writeUserData(data) {
   fs.writeFileSync(userDataFile, JSON.stringify(data, null, 2));
 }
 
-// Registration route
 app.post('/register', (req, res) => {
   const { username, password } = req.body;
-  console.log('Registering user:', { username, password });
   const users = readUserData();
-
   if (users.find(user => user.username === username)) {
     return res.status(400).send('User already exists');
   }
-
   users.push({ username, password });
   writeUserData(users);
-
   res.send('Registration successful! Please login now.');
 });
 
-// Login route
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
-  console.log('Login attempt with:', { username, password });
   const users = readUserData();
-
   const user = users.find(user => user.username === username && user.password === password);
-
   if (user) {
     res.cookie('auth', 'true', { path: '/' });
     res.send('Login successful');
   } else {
-    console.log('Invalid credentials for:', { username });
     res.status(401).send('Invalid credentials');
   }
 });
 
-// Middleware to check authentication
 function authMiddleware(req, res, next) {
-  console.log('Checking auth for', req.path);
   if (req.cookies.auth === 'true') {
     next();
   } else {
-    console.log('Not authenticated, redirecting to /login');
-    res.redirect('/login'); // Redirect to login page if not authenticated
+    res.redirect('/login');
   }
 }
 
-// Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Protect all /blog content except the login page
-app.use('/blog', authMiddleware, express.static(path.join(__dirname, 'dist/blog')));
-
-// Serve static files for login page without authentication
-app.use('/login', express.static(path.join(__dirname, 'dist/login')));
+app.use('/blog/:slug', (req, res, next) => {
+  const slug = req.params.slug;
+  const articlePath = path.join(__dirname, 'src', 'blog', `${slug}.md`);
+  if (fs.existsSync(articlePath)) {
+    const articleData = fs.readFileSync(articlePath, 'utf-8');
+    const privacy = articleData.match(/privacy:\s*(\w+)/);
+    if (privacy && privacy[1] === 'private') {
+      return authMiddleware(req, res, next);
+    }
+  }
+  next();
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

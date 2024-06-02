@@ -1,8 +1,8 @@
 ---
+title: "My First Post"
+date: "2023-06-01"
 layout: "blog.njk"
-title: "My First Blog Post"
-date: "2024-06-01"
-
+privacy: "public"
 ---
 
-This is the content of my first blog post.
+This is my first blog post!
